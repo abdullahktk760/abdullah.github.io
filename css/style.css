@@ -48,7 +48,14 @@ html {
 
  figcaption, figure, footer, header, main, nav, section {
   display: block; }
-
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -2035,24 +2042,28 @@ h1, h2, h3, h4, h5,
       background: #3e64ff !important;
       color: #000000 !important; }
 
-.ftco-about .img-about {
-  width: 100%;
-  z-index: 0;
-  position: relative; }
-  .ftco-about .img-about .img {
-    border-radius: 20px;
-    display: block;
-    width: 100%;
-    position: relative;
-    z-index: 1; }
+      .ftco-about .img-about {
+        width: 100%;
+        z-index: 0;
+        position: relative;
+      }
 
-    @media (max-width: 767px) {
+      .ftco-about .img-about .img {
+        border-radius: 20px;
+        display: block;
+        width: 100%; /* This ensures the image takes up the full width of its parent and scales down accordingly */
+        max-width: 100%; /* This ensures the image doesn't overflow its container */
+        position: relative;
+        z-index: 1;
+      }
 
-        .ftco-about .img-about .img {
-width:400px;
-height:500px;
-    }
-    }
+      @media (max-width: 767px) {
+          .ftco-about .img-about .img {
+              max-width: 400px;
+              height: auto; /* This will maintain the image's aspect ratio */
+          }
+      }
+
 .ftco-about ul.about-info {
   display: inline-block;
   padding: 0;
